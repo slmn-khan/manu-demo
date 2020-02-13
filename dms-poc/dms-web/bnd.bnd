@@ -1,0 +1,8 @@
+Bundle-Name: dms-web
+Bundle-SymbolicName: com.tc.demo.dms
+Bundle-Version: 1.0.0
+Export-Package: com.tc.demo.dms.constants
+-jsp: *.jsp,*.jspf
+-plugin.bundle: com.liferay.ant.bnd.resource.bundle.ResourceBundleLoaderAnalyzerPlugin
+-plugin.jsp: com.liferay.ant.bnd.jsp.JspAnalyzerPlugin
+-sources: true

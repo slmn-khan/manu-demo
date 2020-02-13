@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.tc.poc.dms.model.DmsPoc">
+		<field name="uuid" type="String" />
+		<field name="id" type="long" />
+		<field name="groupId" type="long" />
+		<field name="orgId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="modifiedBy" type="long" />
+		<field name="modifiedByName" type="String" />
+		<field name="deleted" type="boolean" />
+		<field name="repairOrderNo" type="String" />
+		<field name="dealerCode" type="String" />
+		<field name="authorisedDealerInfo" type="String" />
+		<field name="dealershipName" type="String" />
+		<field name="dealershipAddress" type="String" />
+		<field name="dealerShipPhoneNo" type="long" />
+		<field name="faxNo" type="long" />
+		<field name="dealershipEmail" type="String" />
+		<field name="GST" type="String" />
+		<field name="customerName" type="String" />
+		<field name="customerAddress" type="String" />
+		<field name="customerMobileNo" type="long" />
+		<field name="customerEmailAddress" type="String" />
+		<field name="contactPerson" type="String" />
+		<field name="contactPersonPhone" type="long" />
+		<field name="regNo" type="String" />
+		<field name="VIN" type="String" />
+		<field name="dateOfDelivery" type="Date" />
+		<field name="kmsIn" type="long" />
+		<field name="model" type="String" />
+		<field name="engineNo" type="String" />
+		<field name="insurancePolicyNo" type="String" />
+		<field name="insuranceExpiryDate" type="Date" />
+		<field name="rsaRequired" type="boolean" />
+		<field name="appointmentType" type="String" />
+		<field name="orderDateIn" type="Date" />
+		<field name="orderTimeIn" type="Date" />
+		<field name="serviceAdvisor" type="String" />
+		<field name="serviceAdvisorMobileNo" type="long" />
+		<field name="soldByDealer" type="String" />
+		<field name="customerMobilityType" type="String" />
+		<field name="transactionNo" type="String" />
+		<field name="reasonForVisit" type="String" />
+		<field name="extendedWarranty" type="String" />
+		<field name="servicePlan" type="String" />
+		<field name="customerOrderDescription" type="String" />
+		<field name="complaint" type="String" />
+		<field name="workToBeDone" type="String" />
+		<field name="instruction" type="String" />
+		<field name="carPicture" type="String" />
+		<field name="xDent" type="String" />
+		<field name="scratch" type="String" />
+		<field name="bodyDamage" type="String" />
+		<field name="modificationOrNonOBMFittings" type="String" />
+		<field name="tyreCondition" type="String" />
+		<field name="treadDepth" type="String" />
+		<field name="frontRight" type="String" />
+		<field name="frontLeft" type="String" />
+		<field name="rearRight" type="String" />
+		<field name="rearLeft" type="String" />
+		<field name="windowsGlazzing" type="String" />
+		<field name="wiperBlades" type="String" />
+		<field name="lights" type="String" />
+		<field name="exhaustSystem" type="String" />
+		<field name="underbody" type="String" />
+		<field name="engineCompartment" type="String" />
+		<field name="washing" type="String" />
+		<field name="oilLevel" type="String" />
+		<field name="coolant" type="String" />
+		<field name="windshieldWasher" type="String" />
+		<field name="brakes" type="String" />
+		<field name="axle" type="String" />
+		<field name="monograms" type="String" />
+		<field name="polishing" type="String" />
+		<field name="fuel" type="String" />
+		<field name="ownersManual" type="String">
+			<hint name="max-length">4096</hint>
+		</field>
+		<field name="serScheMaintenanceManual" type="String" />
+		<field name="infotainmentMmiNavigManual" type="String" />
+		<field name="extWarrantyBook" type="String" />
+		<field name="quickReferenceGuide" type="String" />
+		<field name="spareWheel" type="String" />
+		<field name="jackToolKits" type="String" />
+		<field name="floorMat" type="String" />
+		<field name="mudFlaps" type="String" />
+		<field name="warningTriangle" type="String" />
+		<field name="firstAidKit" type="String" />
+		<field name="noOfKeys" type="long" />
+		<field name="otherLooseItems" type="String" />
+		<field name="financialInformation" type="String" />
+		<field name="modeOfPayment" type="String" />
+		<field name="estimatedCost" type="long" />
+		<field name="taxesAsApplicable" type="String" />
+		<field name="estimatedDateOfDelivery" type="Date" />
+		<field name="estimatedDeliveryTime" type="String" />
+		<field name="laborEstimate" type="long" />
+		<field name="parts" type="long" />
+		<field name="termsAndConditions" type="String" />
+		<field name="grantMyConsent" type="String" />
+		<field name="serviceAdvisotSignature" type="String" />
+		<field name="customerSignature" type="String">
+			<hint name="max-length">9096</hint>
+		</field>
+		<field name="remarksArea" type="String" />
+		<field name="termsStrictly" type="String" />
+		<field name="workshopCopy" type="String" />
+		<field name="version" type="String" />
+		<field name="customerWaiting" type="boolean" />
+		<field name="campaign" type="String" />
+		<field name="dissNo" type="String" />
+		<field name="descriptiveInformation" type="String" />
+		<field name="timeStart" type="String" />
+		<field name="timeStop" type="String" />
+		<field name="nameOfTechnician" type="String" />
+		<field name="technicianSignature" type="String" />
+		<field name="inventoryPartsJSONStr" type="String">
+			<hint name="max-length">2048</hint>
+		</field>
+		<field name="partNumber" type="String" />
+		<field name="partDescription" type="String" />
+		<field name="partCatagory" type="String" />
+		<field name="internalPartsOrder" type="String" />
+		<field name="partQuantity" type="String" />
+		<field name="partRate" type="String" />
+		<field name="partCost" type="String" />
+		<field name="partTotal" type="String" />
+		<field name="partsJSONStr" type="String">
+			<hint name="max-length">2048</hint>
+		</field>
+		<field name="labourDescription" type="String" />
+		<field name="labourCatagory" type="String" />
+		<field name="labourCode" type="String" />
+		<field name="timeUnit" type="String" />
+		<field name="hours" type="String" />
+		<field name="labourRate" type="String" />
+		<field name="labourCost" type="long" />
+		<field name="labourTotal" type="long" />
+		<field name="labourJSONStr" type="String">
+			<hint name="max-length">2048</hint>
+		</field>
+		<field name="additionalRepairsReqDesc" type="String" />
+		<field name="additionalRepairsReqPart" type="String" />
+		<field name="additionalRepairsReqLabour" type="String" />
+		<field name="additionalRepairsReqAuth" type="String" />
+		<field name="additionalRepairsReqDT" type="Date" />
+		<field name="roadTestKmOut" type="long" />
+		<field name="roadTestKmIn" type="long" />
+		<field name="allJobsAttended" type="boolean" />
+		<field name="accessoriesSettingAsOriginal" type="boolean" />
+		<field name="roadTestSignature" type="String" />
+		<field name="roadTestDate" type="Date" />
+		<field name="interiors" type="boolean" />
+		<field name="interiorsPolishing" type="boolean" />
+		<field name="exteriors" type="boolean" />
+		<field name="exteriorsPolishing" type="boolean" />
+		<field name="vacuumCleaned" type="boolean" />
+		<field name="washingCheckerSignature" type="String" />
+		<field name="status" type="String" />
+		<field name="toShow" type="boolean" />
+	</model>
+</model-hints>

@@ -1,0 +1,236 @@
+<?xml version="1.0"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 7.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_7_1_0.dtd">
+
+<service-builder package-path="com.tc.poc.dms">
+	<author>Manisha Gera</author>
+	<namespace>DMSPOC</namespace>
+	<entity local-service="true" name="DmsPoc" remote-service="true" uuid="true">
+
+		<!-- PK fields -->
+
+		<column name="id" primary="true" type="long" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+		<column name="orgId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+		<column name="modifiedBy" type="long"></column>
+		<column name="modifiedByName" type="String"></column>
+		<column name="deleted" type="boolean"></column>
+	
+		<!-- Other fields -->
+		
+		<!-- Dealer Ship Details -->
+		<column name="repairOrderNo" type="String" />
+		<column name="dealerCode" type="String" />
+		<column name="authorisedDealerInfo" type="String" />
+		<column name="dealershipName" type="String" />
+		<column name="dealershipAddress" type="String" />
+		<column name="dealerShipPhoneNo" type="long" />
+		<column name="faxNo" type="long" />
+		<column name="dealershipEmail" type="String" />
+		<column name="GST" type="String" />
+		
+		<!-- Repair Oder (Customer) Details -->		
+		
+		<column name="customerName" type="String" />
+		<column name="customerAddress" type="String" />
+		<column name="customerMobileNo" type="long" />
+		<column name="customerEmailAddress" type="String" />
+		<column name="contactPerson" type="String" />
+		<column name="contactPersonPhone" type="long" />
+		<column name="regNo" type="String" />
+		<column name="VIN" type="String" />
+		<column name="dateOfDelivery" type="Date" />
+		<column name="kmsIn" type="long" />
+		<column name="model" type="String" />
+		<column name="engineNo" type="String" />
+		<column name="insurancePolicyNo" type="String" />
+		<column name="insuranceExpiryDate" type="Date" />
+		<column name="rsaRequired" type="boolean" />
+		<column name="appointmentType" type="String" />
+		<column name="orderDateIn" type="Date" />
+		<column name="orderTimeIn" type="Date" />
+		<column name="serviceAdvisor" type="String" />
+		<column name="serviceAdvisorMobileNo" type="long" />
+		<column name="soldByDealer" type="String" />
+		<column name="customerMobilityType" type="String" />
+		<column name="transactionNo" type="String" />
+		<column name="reasonForVisit" type="String" />
+		<column name="extendedWarranty" type="String" />
+		<column name="servicePlan" type="String" />
+		
+		<!-- Customer Order Description -->
+		
+		<column name="customerOrderDescription" type="String" />
+		
+		<!-- Demanded Repair  -->
+		
+		<column name="complaint" type="String" />
+		<column name="workToBeDone" type="String" />
+		<column name="instruction" type="String" />
+		
+		<!-- Inventory Details -->
+		
+		<column name="carPicture" type="String" /> 
+		<column name="xDent" type="String" />
+		<column name="scratch" type="String" />
+		<column name="bodyDamage" type="String" />
+
+		<column name="modificationOrNonOBMFittings" type="String" />
+		<column name="tyreCondition" type="String" />
+		<column name="treadDepth" type="String" />
+		<column name="frontRight" type="String" />
+		<column name="frontLeft" type="String" />
+		<column name="rearRight" type="String" />
+		<column name="rearLeft" type="String" />
+		
+		<!-- Direct Reception Details -->
+		
+		<column name="windowsGlazzing" type="String" />
+		<column name="wiperBlades" type="String" />
+		<column name="lights" type="String" />
+		<column name="exhaustSystem" type="String" />
+		<column name="underbody" type="String" />
+		<column name="engineCompartment" type="String" />
+		<column name="washing" type="String" />
+		<column name="oilLevel" type="String" />
+		<column name="coolant" type="String" />
+		<column name="windshieldWasher" type="String" />
+		<column name="brakes" type="String" />
+		<column name="axle" type="String" />
+		<column name="monograms" type="String" />
+		<column name="polishing" type="String" />
+		<column name="fuel" type="String" />
+		<column name="ownersManual" type="String" />
+		<column name="serScheMaintenanceManual" type="String" />
+		<column name="infotainmentMmiNavigManual" type="String" />
+		<column name="extWarrantyBook" type="String" />
+		<column name="quickReferenceGuide" type="String" />
+		<column name="spareWheel" type="String" />
+		<column name="jackToolKits" type="String" />
+		<column name="floorMat" type="String" />
+		<column name="mudFlaps" type="String" />
+		<column name="warningTriangle" type="String" />
+		<column name="firstAidKit" type="String" />
+		<column name="noOfKeys" type="long" />
+		<column name="otherLooseItems" type="String" />
+		<column name="financialInformation" type="String" />
+		<column name="modeOfPayment" type="String" />
+		<column name="estimatedCost" type="long" />
+		<column name="taxesAsApplicable" type="String" />
+		<column name="estimatedDateOfDelivery" type="Date" />
+		<column name="estimatedDeliveryTime" type="String" />
+		<column name="laborEstimate" type="long" />
+		<column name="parts" type="long" />
+		<column name="termsAndConditions" type="String" />
+		<column name="grantMyConsent" type="String" />
+		<column name="serviceAdvisotSignature" type="String" />
+		<column name="customerSignature" type="String" />
+		<column name="remarksArea" type="String" />	
+			
+		<column name="termsStrictly" type="String" />
+		<column name="workshopCopy" type="String" />
+		<column name="version" type="String" />
+		<column name="customerWaiting" type="boolean" />
+		<column name="campaign" type="String" />
+		<column name="dissNo" type="String" />
+		<column name="descriptiveInformation" type="String" />
+		<column name="timeStart" type="String" />
+		<column name="timeStop" type="String" />
+		<column name="nameOfTechnician" type="String" />
+		<column name="technicianSignature" type="String" />
+		
+		<!-- Inventory -->
+		<column name="inventoryPartsJSONStr" type="String" />
+		
+		<!-- Parts Replaced (Pre Authorised) -->
+		
+		<column name="partNumber" type="String" />
+		<column name="partDescription" type="String" />
+		<column name="partCatagory" type="String" />
+		<column name="internalPartsOrder" type="String" />
+		<column name="partQuantity" type="String" />
+		<column name="partRate" type="String" />
+		<column name="partCost" type="String" />
+		<column name="partTotal" type="String" />
+		
+		<column name="partsJSONStr" type="String" />
+		
+		<!-- Labour (Pre Authorised) -->
+		
+		<column name="labourDescription" type="String" />
+		<column name="labourCatagory" type="String" />
+		<column name="labourCode" type="String" />
+		<column name="timeUnit" type="String" />
+		<column name="hours" type="String" />
+		<column name="labourRate" type="String" />
+		<column name="labourCost" type="long" />
+		<column name="labourTotal" type="long" />
+		
+		<column name="labourJSONStr" type="String" />
+
+		<!-- Additional Repairs Required -->
+		
+		<column name="additionalRepairsReqDesc" type="String" />
+		<column name="additionalRepairsReqPart" type="String" />
+		<column name="additionalRepairsReqLabour" type="String" />
+		<column name="additionalRepairsReqAuth" type="String" />
+		<column name="additionalRepairsReqDT" type="Date" />
+		
+		<!-- Road test -->
+		<column name="roadTestKmOut" type="long" />
+		<column name="roadTestKmIn" type="long" />
+		<column name="allJobsAttended" type="boolean" />
+		<column name="accessoriesSettingAsOriginal" type="boolean" />
+		<column name="roadTestSignature" type="String" />
+		<column name="roadTestDate" type="Date" />
+		
+		<!-- Washing / Appearance Checked -->
+		
+		<column name="interiors" type="boolean" />
+		<column name="interiorsPolishing" type="boolean" />
+		<column name="exteriors" type="boolean" />
+		<column name="exteriorsPolishing" type="boolean" />
+		<column name="vacuumCleaned" type="boolean" />
+		<column name="washingCheckerSignature" type="String" />
+		<column name="status" type="String" />
+		<column name="toShow" type="boolean" />
+		<!-- Order -->
+
+		
+
+		<!-- Finder methods -->
+		
+		<finder name="Deleted" return-type="Collection">
+			<finder-column name="deleted"></finder-column>
+		</finder>
+		<finder name="DeletedShow" return-type="Collection">
+			<finder-column name="deleted"></finder-column>
+			<finder-column name="toShow"></finder-column>
+		</finder>
+		<finder name="RegNo" return-type="DmsPoc">
+			<finder-column name="regNo"></finder-column>
+		</finder>
+		<finder name="Vin" return-type="DmsPoc">
+			<finder-column name="VIN"></finder-column>
+		</finder>
+		<finder name="RegNoVin" return-type="DmsPoc">
+			<finder-column name="regNo"></finder-column>
+			<finder-column name="VIN"></finder-column>
+		</finder>
+
+		<!-- References -->
+
+		<reference entity="AssetEntry" package-path="com.liferay.portlet.asset" />
+		<reference entity="AssetTag" package-path="com.liferay.portlet.asset" />
+	</entity>
+</service-builder>

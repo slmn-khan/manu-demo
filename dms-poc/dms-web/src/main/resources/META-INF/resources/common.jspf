@@ -1,0 +1,579 @@
+<script type="text/javascript">
+var inventoryJSONStr = [];
+function addDamageParts(){
+	var damageParts = $("input[name='damageParts']:checked").val();
+	var damageDescription = $("#damageDescription").val();
+	var item = {};
+	item["id"] = $("#spanId1").text();
+	item["damageParts"] = damageParts;
+	item["damageDescription"] = damageDescription;
+	inventoryJSONStr.push(item);
+	$("#closeInventoryDialogBtn").trigger( "click" );
+	$("#damageDescription").val('');
+	$("input[name='damageParts']").prop('checked', false);
+}
+function setDamageParts(obj){
+	console.log("clicked:");
+	document.getElementById("spanId").innerHTML=obj;
+	document.getElementById("spanId1").innerHTML=obj;
+}
+
+
+var filterType="";
+var scannedImagePath = "";
+function saveImageToServer(type,dataUri,file){
+	var fd = new FormData();
+	console.log('saveImageToServer');
+	fd.append('<portlet:namespace/>type', type);
+	fd.append('<portlet:namespace/>filterType', "vin");
+	fd.append("<portlet:namespace/>cmd", "scanImage");
+	fd.append("<portlet:namespace/>image", file);
+	$.ajax({
+	    url : '<%=resourceUrl%>',
+	    type: 'POST',
+	    data : fd, 
+	    success : function(data){
+	   		console.log("success");
+	    },
+	    error: function (){
+			console.log('Error Occurred');
+  		},
+		dataType:"json",
+		processData: false,
+	    contentType: false
+	});		
+}
+
+var imageObj;
+function getRegNoVINRecord(regNo,vin){
+	
+	$.ajax({
+	    url : '<%=resourceUrl%>',
+	    type: 'POST',
+	    dataType : "text",
+	    data : {
+				"<portlet:namespace/>cmd" : "getRegVINDetails",
+				"<portlet:namespace/>regNo" : regNo,
+				"<portlet:namespace/>vin" : vin,
+	           }, 
+	    success : function(data){
+	    	//console.log("data::"+data);
+	    	
+	    	if(data){
+	    		//$("#<portlet:namespace/>enterRegNoAndVIN").html('');
+		    	$("#<portlet:namespace/>enterRegNoAndVIN").hide();
+		   		$("#<portlet:namespace/>enterYourJobCardDetails").html(data);
+		   		$("#closeDialogBtn").trigger( "click" );
+		   		//imageObj = $('img[usemap]');
+		   		//console.log("imageObj:"+imageObj);
+		   		checkIfImageMapAvailable();
+	    	}else {
+	    		showErrorMessage('reg-error-msg',"");
+	    		showErrorMessage('vin-error-msg',"");
+	    		if(regNo){
+	    			showErrorMessage('vin-error-msg',"");
+	    			showErrorMessage('reg-error-msg',"No Records found with given Registration Number");
+	    		}else if(vin){
+	    			showErrorMessage('reg-error-msg',"");
+	    			showErrorMessage('vin-error-msg',"No Records found with given Vehicle Identification Number");
+	    		}else{
+	    			showErrorMessage('reg-error-msg',"");
+		    		showErrorMessage('vin-error-msg',"");
+	    		}
+	    	}
+	    	hideProgress();
+	    },
+	    error: function (){
+			console.log('Error Occurred');
+  		}
+	});		
+}
+function getScanRegNoVINRecord(regNo,vin,filterType){
+	
+	$.ajax({
+	    url : '<%=resourceUrl%>',
+	    type: 'POST',
+	    dataType : "text",
+	    data : {
+				"<portlet:namespace/>cmd" : "scanImage",
+				"<portlet:namespace/>regNo" : regNo,
+				"<portlet:namespace/>vin" : vin,
+				"<portlet:namespace/>filterType" : filterType,
+	           }, 
+	    success : function(data){
+	    	//console.log("data::"+data);
+	    	
+	    	if(data){
+	    		//$("#<portlet:namespace/>enterRegNoAndVIN").html('');
+		    	$("#<portlet:namespace/>enterRegNoAndVIN").hide();
+		   		$("#<portlet:namespace/>enterYourJobCardDetails").html(data);
+		   		$("#closeDialogBtn").trigger( "click" );
+		   		//imageObj = $('img[usemap]');
+		   		//console.log("imageObj:"+imageObj);
+		   		checkIfImageMapAvailable();
+	    	}else {
+	    		showErrorMessage('reg-error-msg',"");
+	    		showErrorMessage('vin-error-msg',"");
+	    		if(regNo){
+	    			showErrorMessage('vin-error-msg',"");
+	    			showErrorMessage('reg-error-msg',"No Records found with given Registration Number");
+	    		}else if(vin){
+	    			showErrorMessage('reg-error-msg',"");
+	    			showErrorMessage('vin-error-msg',"No Records found with given Vehicle Identification Number");
+	    		}else{
+	    			showErrorMessage('reg-error-msg',"");
+		    		showErrorMessage('vin-error-msg',"");
+	    		}
+	    	}
+	    	
+	    },
+	    error: function (){
+			console.log('Error Occurred');
+  		}
+	});		
+}
+
+function checkIfImageMapAvailable(){
+	//console.log("imagemap:"+imageObj);
+	imageObj = $('img[usemap]');
+	if( imageObj != undefined){
+		console.log("imagemap:"+imageObj);
+			imageObj.imageMap();
+			
+	}else{
+			setTimeout(function(){
+				checkIfImageMapAvailable();
+   		}, 1000);
+	}
+}
+function showErrorMessage(containerId,msg){
+	$('#'+containerId).text(msg);
+	 try{
+		 $('#'+containerId).focus();
+	  }catch(e){}
+	  $('#'+containerId).addClass('bounceIn animated');
+	  setTimeout(function(){
+		  $('#'+containerId).removeClass('bounceIn animated');
+	  }, 1000);
+	hideProgress();
+}
+
+function submitData(){	
+	var id = $("#dmsPocId").val();
+	/* General  */
+	var repairOrderNo = $("#repairOrderNo").text();
+	var regNo = $("#regNo").text();
+	var dateIn = $("#dateIn").text();	
+	var customerName = $("#customerName").val();
+	var vin = $("#vin").text();
+	var timeIn = $("#timeIn").text();	
+	var address = $("#address").val();
+	var dateOfDel = $("#dateOfDel").val();
+	var sa = $("#sa").val();
+	var customerMobileNo = $("#mobileNumber").val();
+	var kms = $("#kms").val();
+	var saPhone = $("#saPhone").val();
+	var emailaddress = $("#emailaddress").val();
+	var dealerCode = $("#dealerCode").val();
+	var soldByDealer = $("#soldByDealer").val();
+	var contactPerson = $("#contactPerson").val();
+	var contactPersonPhone= $("#contactPersonPhone").val();
+	var model = $("#model").text();
+	var mobilityService = $("#mobilityService").val();	
+	var appointmentType = $("#appointmentType").val();
+	var servicePlan = $("#servicePlan").val();
+	
+	/* added field */	
+	var modeOfPayment = $("input[name='modeOfPayment']:checked").val();
+	var estimatedDateOfDelivery = document.getElementById("estimatedDateOfDelivery").value;	
+	var estimatedTimeOfDelivery = document.getElementById("estimatedTimeOfDelivery").value;
+	var estimatedCost = document.getElementById("estimatedCost").value;
+	var labourCost = document.getElementById("labourCost").value;
+	var partCost = document.getElementById("partCost").value;
+	
+	/* Inventory */
+	var xDent = $('input[name="repairOrderNo"]:checked').length > 0;
+	var tyreCondition = $('input[name="tyreCondition"]:checked').length > 0;
+	var scratch = $('input[name="scratch"]:checked').length > 0;
+	var treadDepth = $('input[name="treadDepth"]:checked').length > 0;
+	var bodyDamage = $('input[name="bodyDamage"]:checked').length > 0;
+	var frontRight = $('input[name="frontRight"]:checked').length > 0;
+	var frontLeft = $('input[name="frontLeft"]:checked').length > 0;
+	var rearRight = $('input[name="rearRight"]:checked').length > 0;
+	var rearLeft = $('input[name="rearLeft"]:checked').length > 0;
+	
+	/* Direct Reception */
+	
+	var windowsGlazing = $("input[name='dr11']:checked").val();	
+	var wiperBlades = $("input[name='dr22']:checked").val();
+	var lights = $("input[name='dr33']:checked").val();
+	var exhoustSystem = $("input[name='dr44']:checked").val();
+	var underbody = $("input[name='dr55']:checked").val();
+	var enginCompartment = $("input[name='dr111']:checked").val();
+	var oilLevel = $("input[name='dr1']:checked").val();
+	var coolant = $("input[name='dr2']:checked").val();
+	var windshildWasher = $("input[name='dr3']:checked").val();
+	var breaks = $("input[name='dr4']:checked").val();
+	var axle = $("input[name='dr5']:checked").val();
+	var monograms = $("input[name='dr222']:checked").val();
+	var polishing = $("input[name='polishing']:checked").val();
+	
+	var fule = $("input[name='fuelLevel']:checked").val();
+	
+	var inventoryList = [];
+	$("input:checkbox[name=inventoryList]:checked").each(function(index){
+		item = {};
+		item["id"] = index;
+		item["value"] = $(this).val();
+		inventoryList.push(item);
+	});
+	var ownerManual = JSON.stringify(inventoryList);
+	//var ownerManual = $('input[name="ownerManual"]:checked').length > 0;
+	var maintenanceManuals = $('input[name="maintenanceManuals"]:checked').length > 0;
+	var infotainmentMMI = $('input[name="infotainmentMMI"]:checked').length > 0;
+	var extWarrantyBook = $('input[name="extWarrantyBook"]:checked').length > 0;
+	var quickReferenceGuide = $('input[name="quickReferenceGuide"]:checked').length > 0;
+	var spareWheel = $('input[name="spareWheel"]:checked').length > 0;
+	var toolKit = $('input[name="toolKit"]:checked').length > 0;
+	var floorMats = $('input[name="floorMats"]:checked').length > 0;
+	var mudFlaps = $('input[name="mudFlaps"]:checked').length > 0;
+	var warningTriangle = $('input[name="warningTriangle"]:checked').length > 0;
+	var firstAidKit = $('input[name="firstAidKit"]:checked').length > 0;
+	var cd = $('input[name="cd"]:checked').length > 0;
+	//var noOfKeys = document.getElementById("noOfKeys").value;
+	var otherLooseItems = $('input[name="otherLooseItems"]:checked').length > 0;
+	var otherLooseItemsDes = $('#specifyLooseItemDesc').val();
+	
+	var customerVoice = createCustomerVoiceListArray();
+	var workToBeDone = createWorkToBeDoneListArray();
+	
+	var labourJSONArray = createLabourJSONArray();
+	var partsJSONArray = createPartsJSONArray();
+	
+	var digitalSignature = sig.toDataURL();;
+	//alert(digitalSignature);
+	
+// 	$.ajax({
+//     url: "https://api.twilio.com/2010-04-01/Accounts/AC6114e11cda3255ead081d213846a8c8e/Messages.json",
+//     method: 'POST',
+//     auth: {
+//         "user": "AC6114e11cda3255ead081d213846a8c8e",
+//         "password": "d7e8568c4c4f0db9bcdb71bc9fb231a3"
+//     	}
+// 	}, 
+//     success : function(data){
+//     	console.log("Watsapp message sent successfully.");
+//     	//location.reload(true);
+//     },
+//     error: function (){
+// 		console.log('Error Occurred');
+// 			}
+	
+	
+// 	});
+	
+ 	$.ajax({
+	    url : '<%=resourceUrl%>',
+	    type: 'POST',
+	    dataType : "text",
+	    data : {
+				"<portlet:namespace/>cmd" : "createJobCard",
+				"<portlet:namespace/>id" : id,
+				"<portlet:namespace/>repairOrderNo" : repairOrderNo,
+				"<portlet:namespace/>regNo" : regNo,
+				"<portlet:namespace/>dateIn" : dateIn,
+				"<portlet:namespace/>customerName" : customerName,				
+				"<portlet:namespace/>vin" : vin,
+				"<portlet:namespace/>timeIn" : timeIn,
+				"<portlet:namespace/>address" : address,
+				"<portlet:namespace/>dateOfDel" : dateOfDel,
+				"<portlet:namespace/>sa" : sa,
+				"<portlet:namespace/>customerMobileNo" : customerMobileNo,
+				"<portlet:namespace/>kms" : kms,
+				"<portlet:namespace/>saPhone" : saPhone,
+				"<portlet:namespace/>emailaddress" : emailaddress,
+				"<portlet:namespace/>dealerCode" : dealerCode,
+				"<portlet:namespace/>soldByDealer" : soldByDealer,
+				"<portlet:namespace/>contactPerson" : contactPerson,
+				"<portlet:namespace/>contactPersonPhone" : contactPersonPhone,
+				"<portlet:namespace/>model" : model,
+				"<portlet:namespace/>mobilityService" : mobilityService,
+				"<portlet:namespace/>appointmentType" : appointmentType,
+				"<portlet:namespace/>servicePlan" : servicePlan,
+				"<portlet:namespace/>xDent" : xDent,
+				"<portlet:namespace/>tyreCondition" : tyreCondition,
+				"<portlet:namespace/>scratch" : scratch,
+				"<portlet:namespace/>treadDepth" : treadDepth,
+				"<portlet:namespace/>bodyDamage" : bodyDamage,
+				"<portlet:namespace/>frontRight" : frontRight,
+				"<portlet:namespace/>frontLeft" : frontLeft,
+				"<portlet:namespace/>rearRight" : rearRight,
+				"<portlet:namespace/>rearLeft" : rearLeft,
+				"<portlet:namespace/>windowsGlazing" : windowsGlazing,
+				"<portlet:namespace/>wiperBlades" : wiperBlades,
+				"<portlet:namespace/>lights" : lights,
+				"<portlet:namespace/>exhoustSystem" : exhoustSystem,
+				"<portlet:namespace/>underbody" : underbody,
+				"<portlet:namespace/>enginCompartment" : enginCompartment,
+				"<portlet:namespace/>oilLevel" : oilLevel,
+				"<portlet:namespace/>coolant" : coolant,
+				"<portlet:namespace/>windshildWasher" : windshildWasher,
+				"<portlet:namespace/>breaks" : breaks,
+				"<portlet:namespace/>axle" : axle,
+				"<portlet:namespace/>monograms" : monograms,
+				"<portlet:namespace/>polishing" : polishing,
+				"<portlet:namespace/>fule" : fule,
+				"<portlet:namespace/>ownerManual" : ownerManual,
+				"<portlet:namespace/>maintenanceManuals" : maintenanceManuals,
+				"<portlet:namespace/>infotainmentMMI" : infotainmentMMI,
+				"<portlet:namespace/>extWarrantyBook" : extWarrantyBook,
+				"<portlet:namespace/>quickReferenceGuide" : quickReferenceGuide,
+				"<portlet:namespace/>spareWheel" : spareWheel,
+				"<portlet:namespace/>toolKit" : toolKit,
+				"<portlet:namespace/>floorMats" : floorMats,
+				"<portlet:namespace/>mudFlaps" : mudFlaps,
+				"<portlet:namespace/>warningTriangle" : warningTriangle,
+				"<portlet:namespace/>firstAidKit" : firstAidKit,
+				"<portlet:namespace/>cd" : cd,
+				//"<portlet:namespace/>noOfKeys" : noOfKeys,
+				"<portlet:namespace/>otherLooseItems" : otherLooseItems,
+				/* added field */
+				"<portlet:namespace/>modeOfPayment" : modeOfPayment,
+				"<portlet:namespace/>estimatedDateOfDelivery" : estimatedDateOfDelivery,
+				"<portlet:namespace/>estimatedTimeOfDelivery" : estimatedTimeOfDelivery,				
+				"<portlet:namespace/>estimatedCost" : estimatedCost,
+				"<portlet:namespace/>labourCost" : labourCost,
+				"<portlet:namespace/>partCost" : partCost,
+				"<portlet:namespace/>customerVoice" : JSON.stringify(customerVoice),
+				"<portlet:namespace/>workToBeDone" : JSON.stringify(workToBeDone),
+				"<portlet:namespace/>asaExpiryDate" : new Date(),
+				
+				"<portlet:namespace/>labourJSONArray" : JSON.stringify(labourJSONArray),
+				"<portlet:namespace/>partsJSONArray" : JSON.stringify(partsJSONArray),
+				"<portlet:namespace/>inventoryPartsJSONStr" : JSON.stringify(inventoryJSONStr),
+				"<portlet:namespace/>otherLooseItemsDes" : otherLooseItemsDes,
+				
+				"<portlet:namespace/>customerSignature" : digitalSignature
+							
+	           }, 
+	    success : function(data){
+	    	alert("Job Card has been created successfully.");
+	    	$("#<portlet:namespace/>enterRegNoAndVIN").hide();
+	   		$("#<portlet:namespace/>enterYourJobCardDetails").hide();
+	   		$("#<portlet:namespace/>yourJobCardDetails").html(data);
+	    	//location.reload(true);
+	    },
+	    error: function (){
+			console.log('Error Occurred');
+  			}
+	    }); 
+}
+function createCustomerVoiceListArray(){
+	var customerVoiceJsonData = [];
+	$('.customer-voice').each(function(index){
+		var inputText = $(this).val();
+		var id =  $(this).attr('id');
+		item = {}
+	    item ["key"] = index+1;
+	    item ["value"] = inputText;
+	    customerVoiceJsonData.push(item);
+	});
+	console.log("customerVoiceJsonData"+JSON.stringify(customerVoiceJsonData));
+	return customerVoiceJsonData;
+}
+function createWorkToBeDoneListArray(){
+	var workToBeDoneJsonData = [];
+	$('.work-to-be-done').each(function(index){
+		var inputText = $(this).val();
+		var id =  $(this).attr('id');
+		item = {}
+	    item ["key"] = index+1;
+	    item ["value"] = inputText;
+	    workToBeDoneJsonData.push(item);
+	});
+	console.log("workToBeDoneJsonData"+JSON.stringify(workToBeDoneJsonData));
+	return workToBeDoneJsonData;
+}
+function createLabourNameListArray(){
+	var labourNameJsonData = [];
+	$('input[name="technicianName"]').each(function(index){
+		var inputText = $(this).val();
+		var id =  $(this).attr('id');
+		item = {}
+	    item ["key"] = index+1;
+	    item ["value"] = inputText;
+	    labourNameJsonData.push(item);
+	});
+	console.log("labourNameJsonData"+JSON.stringify(labourNameJsonData));
+	return labourNameJsonData;
+}
+
+
+function insertRow(loopCount) {
+	  var table = document.getElementById("customerVoice");
+	  var row = table.insertRow(loopCount);
+	  var cell1 = row.insertCell(0);
+	  var cell2 = row.insertCell(1);
+	  cell1.innerHTML = "NEW CELL1";
+	  cell2.innerHTML = "NEW CELL2";
+	}
+
+
+
+function getRegNo(){ 	
+	var regNo=document.getElementById("<portlet:namespace/>regNo").value;  	  
+	$.ajax({
+	    url : '<%=resourceUrl%>',
+	    type: 'POST',
+	    dataType : "text",
+	    data : {
+				"<portlet:namespace/>cmd" : "regDetails",
+				"<portlet:namespace/>regNo" : regNo,
+	           }, 
+	    success : function(data){	    	
+	   		$("#<portlet:namespace/>registrationDetails").html(data);	    	
+	    },
+	    error: function (){
+			console.log('Error Occurred');
+  			}
+	    });	
+	} 
+
+
+function addRow(partsId) {
+
+	var table = document.getElementById(partsId);
+
+	var rowCount = table.rows.length;
+	alert("row count : "+rowCount);
+	var row = table.insertRow(rowCount);
+
+	var colCount = table.rows[1].cells.length;
+	alert("column count : "+colCount)
+	for(var i=0; i<colCount; i++) {
+
+		var newcell	= row.insertCell(i);
+
+		newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+		//alert(newcell.childNodes);
+		switch(newcell.childNodes[0].type) {
+			case "text":
+					newcell.childNodes[0].value = "";
+					break;
+			case "checkbox":
+					newcell.childNodes[0].checked = false;
+					break;
+			case "select-one":
+					newcell.childNodes[0].selectedIndex = 0;
+					break;
+		}
+	}
+}
+
+function doCalc() {
+	   var total = 0;
+	   $('tr').each(function() {
+	       $(this).find('span.amount').html($('input:eq(1)', this).val() * $('input:eq(2)', this).val());
+	   });
+	   $('.amount').each(function() {
+	       total += parseInt($(this).text(),10);
+	   });
+	   $('span.total_amount').html(total);
+	}
+
+	$('input').change(doCalc);
+	
+	function createPartsJSONArray(){
+		var partsJSONArray = [];
+		$('.part-quantity').each(function(index){
+			var tmpStr = $(this).attr('id');
+			var array = tmpStr.split("-");
+			var uniqueId = array[2];
+		  console.log("id"+uniqueId);
+		  var quantityVal = $(this).val();
+		  var priceVal = $('#part-per-unit-price-'+uniqueId).val();
+		  
+		  var partNumber = $('#part-no-'+uniqueId).val();
+		  var partDesc = $('#part-desc-'+uniqueId).val();
+		  item = {};
+		  if(quantityVal && priceVal){
+			  var amount = quantityVal * priceVal;
+			  item ["partAmount"] = amount;
+		  }
+		  item ["id"] = uniqueId;
+		  item ["partNumber"] = partNumber;
+		  item ["partDesc"] = partDesc;
+		  item ["pricePerUnit"] = priceVal;
+		  item ["partQuantity"] = quantityVal;
+		  partsJSONArray.push(item);
+		});
+		console.log("partsJSONArray"+JSON.stringify(partsJSONArray));
+		return partsJSONArray;
+	}
+	function createLabourJSONArray(){
+		var labourJSONArray = [];
+		$('.labour-expected-time').each(function(index){
+			 var tmpStr = $(this).attr('id');
+				var array = tmpStr.split("-");
+				var uniqueId = array[3];
+			  console.log("id"+uniqueId);
+			  var expectedTime = $(this).val();
+			  var hourlyRate = $('#labour-hourly-rate-'+uniqueId).val();
+			  var labourCode = $('#labour-code-'+uniqueId).val();
+			  var labourDesc = $('#labour-code-'+uniqueId).val();
+		  item = {};
+		  if(expectedTime && hourlyRate){
+			  var amount = expectedTime * hourlyRate;
+			  item ["labourAmount"] = amount;
+		  }
+		  item ["id"] = uniqueId;
+		  item ["labourCode"] = labourCode;
+		  item ["labourDesc"] = labourDesc;
+		  item ["labourHourlyRate"] = hourlyRate;
+		  item ["labourExpectedTime"] = expectedTime;
+		  labourJSONArray.push(item);
+		});
+		console.log("labourJSONArray"+JSON.stringify(labourJSONArray));
+		return labourJSONArray;
+	}
+	function changeLogoAsPerBrand(brandName){
+		if(brandName == "audi"){
+			$("#siteDefaultLogo").hide();
+			$("#siteDefaultLogo1").hide();
+			$("#siteVwLogo").hide();
+			$("#siteVwLogo1").hide();
+			$("#siteSkodaLogo").hide();
+			$("#siteSkodaLogo1").hide();
+			$("#siteAudiLogo").show();
+			$("#siteAudiLogo1").show();
+		}else if(brandName == "skoda"){
+			$("#siteDefaultLogo").hide();
+			$("#siteDefaultLogo1").hide();
+			$("#siteVwLogo").hide();
+			$("#siteVwLogo1").hide();
+			$("#siteSkodaLogo").show();
+			$("#siteSkodaLogo1").show();
+			$("#siteAudiLogo").hide();
+			$("#siteAudiLogo1").hide();
+		}else if(brandName == "vw"){
+			$("#siteDefaultLogo").hide();
+			$("#siteDefaultLogo1").hide();
+			$("#siteVwLogo").show();
+			$("#siteVwLogo1").show();
+			$("#siteSkodaLogo").hide();
+			$("#siteSkodaLogo1").hide();
+			$("#siteAudiLogo").hide();
+			$("#siteAudiLogo1").hide();
+		}else{
+			$("#siteDefaultLogo").show();
+			$("#siteDefaultLogo1").show();
+			$("#siteVwLogo").hide();
+			$("#siteVwLogo1").hide();
+			$("#siteSkodaLogo").hide();
+			$("#siteSkodaLogo1").hide();
+			$("#siteAudiLogo").hide();
+			$("#siteAudiLogo1").hide();
+		}
+	
+	}
+</script>

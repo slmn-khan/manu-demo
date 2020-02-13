@@ -1,0 +1,11 @@
+Bundle-Name: dms-poc-api
+Bundle-SymbolicName: com.tc.poc.dms.api
+Bundle-Version: 1.0.0
+Export-Package: \
+	com.tc.poc.dms.exception,\
+	com.tc.poc.dms.model,\
+	com.tc.poc.dms.service,\
+	com.tc.poc.dms.service.persistence,\
+	com.tc.poc.dms.util
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../dms-poc-service/service.xml

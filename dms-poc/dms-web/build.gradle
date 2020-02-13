@@ -1,0 +1,21 @@
+dependencies {
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+	compileOnly group: "com.liferay.portal", name: "com.liferay.util.taglib"
+	compileOnly group: "javax.portlet", name: "portlet-api"
+	compileOnly group: "javax.servlet", name: "javax.servlet-api"
+	compileOnly group: "jstl", name: "jstl"
+	compileOnly group: "org.osgi", name: "org.osgi.service.component.annotations"	
+	compileOnly group: 'com.liferay.commerce', name: 'com.liferay.commerce.product.api', version: '12.0.1'
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.api", version:"10.1.0"
+	compileOnly group: "com.liferay.commerce", name: "com.liferay.commerce.admin.api", version: "2.0.0"
+	compile group: 'com.liferay.commerce', name: 'com.liferay.commerce.account.api', version: '4.0.2'
+	compile group: 'com.liferay.commerce', name: 'com.liferay.commerce.currency.api', version: '2.1.2'
+	compileInclude group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+	
+	
+	
+	// https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk
+	
+	compile project(":modules:dms-poc:dms-poc-api")
+	compile project(":modules:dms-poc:dms-poc-service")
+}

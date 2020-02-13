@@ -1,0 +1,570 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+ 
+.panel{
+	background:#fff;
+}
+
+.panel-shadow{
+	background:#fff;
+	-webkit-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1) !important;
+	-moz-box-shadow: 5px 5px 5px 0px rgba(204,204,204,1) !important;
+	box-shadow: 5px 5px 5px 0px rgba(204,204,204,1) !important;
+}
+    
+.field-data{
+	word-wrap: break-word;
+}
+
+.field-data{
+	
+	color:#333;
+}
+
+/* form, h3, li{
+	color:#333;
+} */
+
+select{
+	border-radius:0px;
+	height:45px;
+}
+select[disabled=disabled]{
+	background: none;
+	    padding: 0px;
+    -webkit-text-fill-color: #333;
+    }
+
+
+
+
+
+
+select[disabled=disabled]{
+	background: none;
+	    padding: 0px;
+    -webkit-text-fill-color: #333;
+    }
+
+
+
+
+
+.notconfirmed{
+	opacity:0.4;
+	
+}
+
+.button.icon-left:before{
+	float:left;
+	
+}
+
+
+
+.ui-datepicker{
+	z-index:10000000 !important;
+}
+
+.hasDateTimePicker{
+	
+	background:url(../img/time.png) no-repeat 99% 0 #fff !important;
+}
+
+
+
+/* .hasDatePicker{
+	background:url(../img/calendar-blue-icon.png) no-repeat 99% 5px #fff !important;
+} 
+ */
+.hasDatePicker [disabled=disabled]{
+	background:#fff !important;
+}
+
+.pullright{
+	float:right;
+}
+
+.pullleft{
+	float:left;
+}
+
+.pullleft input,select,textarea
+{
+/* -webkit-text-fill-color: #333; */
+}
+
+.pullright input,select,textarea
+{
+/* -webkit-text-fill-color: #333; */
+}
+
+
+.col49{
+	width:49%;
+	height:90px;
+	margin-bottom: 5px;
+	
+}
+
+.fullWidth{
+	width:100%;
+	height:50px
+}
+
+.col100{
+	width:100%;
+	height: 90px;
+}
+
+.col41{
+	width:42%;
+	padding-left: 12px;
+}
+
+.col32{
+	width:32%;
+	padding-right:4px;
+}
+
+.col16{
+	width:16%;
+}
+.col100{
+	width:100%;
+}
+.col40{
+	width:40%;
+}
+
+div[data-error]{
+	color: red;
+}
+
+.dataTables_filter label{
+	margin-right: -5px;
+}
+.approvallabel
+{
+	color:#333;
+line-height: 37px ! important;
+}
+.view footer > a.pressed:not(.button){
+	background: url(../img/pointer.png) center bottom no-repeat #204094;
+	
+}
+
+
+div.ui-datepicker{
+ font-size:18px;
+}
+
+.ui-datepicker .ui-datepicker-next .ui-icon {
+	background-position: -48px -192px;
+	background-color:transparent;
+}
+
+.ui-datepicker .ui-datepicker-prev .ui-icon {
+	background-position: -80px -192px;
+	background-color:transparent;
+}
+
+.ui-corner-all{
+	border-radius:0px;
+}
+
+
+.ui-loader .ui-icon{
+	margin-top: 300px;
+	height:60px;
+	width:60px;
+	border:1px solid #333;
+	border-radius:60%;
+	background:url(../img/rotating-arrow.png) center center no-repeat #fff;
+}
+
+
+.fieldSeparator{
+	padding:0 12px;
+	color: #333;
+	font-size:17px;
+	font-weight: bold;
+}
+
+.searchfield{
+	background:url(../img/magnifier.png) no-repeat center right #fff !important;
+	padding:0 30px 0 10px !important;
+	border:1px solid #ddd !important;
+	border-radius:3px !important;
+}
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    text-align:left;
+    font-size:14px;
+    min-width:100px;
+    z-index: 10;
+    border:1px solid #ddd;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+div.dataTables_wrapper div.dataTables_filter input{
+	margin-right:-20px !important;
+}
+
+select{
+	min-width:inherit;
+}
+
+form input,
+form select,
+form textarea{
+	padding:10px;
+/* 	width:100% !important; */
+}
+
+.aui label{
+	margin-top:5px;
+}
+
+input[type="search"]{
+	width:73% !important;
+}
+
+th{
+	border-radius:0px;
+	
+}
+
+.form-group{
+	display: block !important;
+}
+.radio{
+	position: relative ;
+    display: block !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.checkbox{
+	position: relative ;
+    display: block !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.correct-answer {
+	   border: 2px solid #a1a1a1;
+	   border-radius: 5px;
+    background-color: green;
+     width: 100% !important; 
+}
+.incorrect-answer {
+	 border: 2px solid #a1a1a1;
+	   border-radius: 5px;
+    background-color: red;
+    width: 100% !important; 
+}
+
+.show-option-set{
+	 display:block;
+}
+
+.hidden-option-set{
+	  display:none;
+}
+.background-none {
+     background: none !important;
+}
+
+.panel-danger>.panel-heading, .panel-danger>form>.panel-heading {
+    color: #fff !important;
+    background-color: #d95043 !important;
+    border-color: #d52e3b !important;
+}
+
+.panel-success>.panel-heading, .panel-success>form>.panel-heading {
+    color: #fff !important;
+    background-color: #26c281 !important;
+    border-color: #22ad5c !important;
+}
+
+.panel-warning>.panel-heading, .panel-warning>form>.panel-heading {
+    color: #fff !important;
+    background-color: #f4d03f !important;
+    border-color: #f3c027 !important;
+}
+
+.aui .panel-primary {
+    border-color: #AFEEEE !important;
+}
+
+.container-scrollbar {
+overflow:scroll !important;
+overflow-y: scroll !important;
+max-height:200px !important;
+}
+.progress-sm .progress-bar {
+    font-size: 9px !important;
+}
+.aui .progress {
+    overflow: hidden !important;
+    height: 13px !important;
+    margin-bottom: 20px !important;
+    background-color: whitesmoke !important;
+    border-radius: 4px !important;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+.col-lms {
+
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+}
+
+.truncate-ellipsis > * {
+   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ellipsis-loading {
+  font-size: 30px;
+}
+
+.ellipsis-loading:after {
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
+  animation: ellipsis steps(4,end) 900ms infinite;
+  content: "\2026"; /* ascii code for the ellipsis character */
+  width: 0px;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+
+@-webkit-keyframes ellipsis {
+  to {
+    width: 1.25em;    
+  }
+}
+
+.inputBtnSection{
+    display:inline-block;
+    vertical-align:top;
+    font-size:0;
+/*     font-family:verdana; */
+}
+.disableInputField{
+    display:inline-block;
+    vertical-align:top;
+    height: 27px;
+    margin: 0;
+    font-size:14px;
+    padding:0 3px;
+}
+
+.fileUpload {
+	position: relative;
+	overflow: hidden;
+    border:solid 1px gray;
+    display:inline-block;
+    vertical-align:top;
+}
+.uploadBtn{
+    display:inline-block;
+    vertical-align:top;
+    background:rgba(0,0,0,0.5);
+    font-size:14px;
+    padding:0 10px;
+    height:25px;
+    line-height:22px;
+    color:#fff;
+}
+
+.fileUpload input.upload {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+
+.show-pointer{
+	cursor: pointer !important;
+}
+
+.my-custom-tooltip {
+  max-width: none;
+}	
+
+/* LIFERAY 7.1 CSS Changes */
+
+:root {
+    --main-bg-color: #1669af; 
+    --white-color: #fff;  
+    --text-color:#383838; 
+    --theme-black-color:#ff0000;
+}
+.pagination > li.active > a, .pagination > li.active > a:hover, .pagination > li.active > a:focus{
+
+	color:var(--white-color)!important;	
+	background-color:var(--main-bg-color);
+} 
+.page-item.active .page-link{
+	color:var(--white-color)!important;		
+	background-color:var(--main-bg-color);
+}
+.dataTable.no-footer{
+	border :1px solid #ddd!important;
+}
+.btn-primary {
+    color: var(--white-color)!important;
+    background-color: var(--main-bg-color)!important;
+    border-color:var(--main-bg-color)!important;
+    box-shadow: none;
+}
+.primary-icon-color{
+	color:var(--main-bg-color)!important;
+}
+@media only screen and (max-width: 600px) {
+    .btn-responsive{
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+     box-sizing: border-box;
+     display: block;
+     margin-top: 5px;
+     width: 100%!important;
+	}
+}
+@media only screen and (max-width: 600px) {
+    .input-responsive{
+     margin-top: 5px;
+     width: 100%!important;
+	}
+}
+.prev-next-table-icons{
+    font-size: 24px;
+}
+thead.header_table{
+    color:var(--white-color)!important;	
+	background-color:var(--main-bg-color)!important;
+} 
+.btn-primary-fixed{
+	width: 100px;
+	margin: 6px;
+}
+
+
+.form-control {
+	border-color: #ccc !important;
+}
+.control-label{
+	text-align : right !important;
+	padding-right: 16px !important;
+	padding-top: 10px !important;
+}
+.form-row{
+	margin-top : 5px !important;
+	margin-bottom : 5px !important;
+}
+
+.panel-info>.panel-heading, .panel-info>form>.panel-heading {
+    color: #fff;
+    background-color: #34a8db;
+    border-color: #23b1c8;
+}
+.panel-heading-padding{
+	padding: 10px 15px;
+}
+.ck-editor__editable {
+    min-height: 150px;
+}
+thead.header_table_light{
+    color:var(--main-bg-color)!important;
+	background-color:var(--white-color)!important;
+	border: 1px solid #ccc;
+} 
+
+
+
+.modal-dialog .custom-width {
+    max-width: 420px;
+    position: relative;
+}
+
+.panel-custom>.panel-heading, .panel-custom>form>.panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+}
+.panel-custom-options {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}

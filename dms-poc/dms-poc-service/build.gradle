@@ -1,0 +1,14 @@
+dependencies {
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bndlib", version: "3.2.0"
+	compile group: 'com.liferay', name: 'com.liferay.portal.spring.extender.api', version: '4.0.0'
+	compileOnly group: "com.liferay.portal", name: "com.liferay.portal.kernel"
+	compileOnly group: "biz.aQute.bnd", name: "biz.aQute.bnd.annotation", version: '3.2.0'
+	compileOnly group: 'com.liferay', name: 'com.liferay.petra.string', version: '3.0.0'
+	compileOnly project(":modules:dms-poc:dms-poc-api")
+}
+
+buildService {
+	apiDir = "../dms-poc-api/src/main/java"
+}
+
+group = "com.tc.poc.dms"
